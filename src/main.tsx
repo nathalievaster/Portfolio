@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import Navbar from './components/Navbar'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <div>
       <h1>Nathalie</h1>
     </div>
+    <Navbar />
   </React.StrictMode>
 )

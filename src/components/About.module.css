@@ -1,0 +1,47 @@
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12rem;
+    padding: 6rem 2rem;
+}
+
+.about img {
+    width: 450px;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Wrapper för rutorna */
+.about-boxes {
+    position: relative;
+}
+
+/* Gemensam stil för båda rutorna */
+.about-box {
+    color: #F5F1E9;
+    padding: 2rem;
+    width: 220px;
+    min-height: 300px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Övre ruta */
+.about-box.top {
+    background-color: #1F5A44;
+    position: absolute;
+    top: -80px;
+    left: -40px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Nedre ruta */
+.about-box.bottom {
+    position: relative;
+    top: 40px;
+    left: 40px;
+    background-color: #0F3D2E;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}

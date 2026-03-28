@@ -1,0 +1,69 @@
+.work {
+  position: relative;
+  padding: 6rem 2rem;
+}
+
+/* Vertikal linje */
+.timeline {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #7DAA92;
+  transform: translateX(-50%);
+}
+
+/* Projekt-rader */
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6rem 0;
+  gap: 4rem;
+  position: relative;
+}
+
+/* Vänster/höger layout */
+.left {
+  flex-direction: row;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+/* Textbox */
+.content {
+  border: 2px solid #1F5A44;
+  padding: 2rem;
+  max-width: 400px;
+}
+
+/* Bild */
+.project img {
+  width: 400px;
+  height: auto;
+}
+
+/* Knapp */
+button {
+  margin-top: 1.5rem;
+  background-color: #1F5A44;
+  color: #F5F1E9;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background-color: #F9D988;
+  border-radius: 50%;
+  z-index: 2;
+}

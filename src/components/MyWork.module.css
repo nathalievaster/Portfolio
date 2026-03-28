@@ -1,69 +1,82 @@
 .work {
-  position: relative;
-  padding: 6rem 2rem;
+    position: relative;
+    padding: 6rem 2rem;
 }
 
 /* Vertikal linje */
 .timeline {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background-color: #7DAA92;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #7DAA92;
+    transform: translateX(-50%);
 }
 
 /* Projekt-rader */
 .project {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 6rem 0;
-  gap: 4rem;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10rem 4rem;
+    position: relative;
 }
 
 /* Vänster/höger layout */
 .left {
-  flex-direction: row;
+    flex-direction: row;
 }
 
 .right {
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 
 /* Textbox */
 .content {
-  border: 2px solid #1F5A44;
-  padding: 2rem;
-  max-width: 400px;
+    background-color: #1F5A44;
+    color: white;
+    padding: 2rem;
+    max-width: 400px;
 }
 
 /* Bild */
 .project img {
-  width: 400px;
-  height: auto;
+    width: 400px;
+    height: auto;
 }
 
-/* Knapp */
 button {
-  margin-top: 1.5rem;
-  background-color: #1F5A44;
-  color: #F5F1E9;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 999px;
-  cursor: pointer;
+    background: linear-gradient(90deg,
+            #7DAA92 0%,
+            #1F5A44 30%,
+            #1F5A44 50%,
+            #1F5A44 70%,
+            #7DAA92 100%);
+    border: 1px solid #E8E1D6;
+    color: #E8E1D6;
+    box-shadow: 0 4px 6px rgba(240, 203, 158, 0.1);
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    cursor: pointer;
+    background-size: 300% 100%;
+    background-position: left;
+    transition: background-position 0.8s ease, transform 0.3s ease-in-out;
+}
+
+button:hover {
+    background-position: right;
+    transform: scale(1.1);
 }
 
 .circle {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
-  background-color: #F9D988;
-  border-radius: 50%;
-  z-index: 2;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: #F9D988;
+    border-radius: 50%;
+    z-index: 2;
 }

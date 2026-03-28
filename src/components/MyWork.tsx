@@ -10,8 +10,9 @@ const MyWork = () => {
             <div className={`${styles.project} ${styles.left}`}>
                 <div className={styles.circle}></div>
                 <div className={styles.content}>
-                    <p>Bla bla bla om jobbet...</p>
-                    <button>Visit the website</button>
+                    <h2>GymTracker .NET application</h2>
+                    <p>Gymtracker is a .NET application designed to help users track their gym workouts and progress.</p>
+                    <button className={styles.button}>Visit the website</button>
                 </div>
                 <img src={gymtracker} alt="Screenshot from the GymTracker app" />
             </div>

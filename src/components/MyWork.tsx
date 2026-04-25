@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './MyWork.module.css'
 import gymtracker from '../assets/gymtracker.png'
 import travelbuddy from '../assets/travelbuddy.png'
 
 const MyWork = () => {
     const projectsRef = useRef<(HTMLDivElement | null)[]>([])
+    const [isScrollStopped, setIsScrollStopped] = useState(false)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -27,10 +28,32 @@ const MyWork = () => {
         return () => observer.disconnect()
     }, [])
 
+    useEffect(() => {
+        let timer: number
+
+        const handleScroll = () => {
+            setIsScrollStopped(false)
+
+            window.clearTimeout(timer)
+
+            timer = window.setTimeout(() => {
+                setIsScrollStopped(true)
+            }, 250)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            window.clearTimeout(timer)
+        }
+    }, [])
+
     return (
         <section className={styles.work} id="work">
             <div className={styles.timeline}></div>
-            <div className={styles.circle}></div>
+
+            <div className={`${styles.circle} ${isScrollStopped ? styles.circleActive : ''}`}></div>
 
             <div
                 ref={(el) => {

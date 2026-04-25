@@ -14,18 +14,25 @@
     transform: translateX(-50%);
 }
 
-/* FIXED cirkel */
+/* cirkel */
 .circle {
-    position: fixed;
+    position: sticky;
+    top: 50vh;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 30px;
     height: 30px;
     background-color: #F9D988;
     border-radius: 50%;
-
     z-index: 10;
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+}
+
+.circleActive {
+    transform: translateX(-50%) scale(1.6);
+    box-shadow: 0 0 25px rgba(249, 217, 136, 0.9);
+    background-color: #E6D3A3;
 }
 
 /* Projekt-rader */
@@ -52,6 +59,7 @@
     color: white;
     padding: 2rem;
     max-width: 400px;
+    margin: 6rem 0;
 }
 
 /* Bild – default (mindre) */

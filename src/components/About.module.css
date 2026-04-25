@@ -10,6 +10,7 @@
     width: 450px;
     height: auto;
     object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 /* Wrapper för rutorna */
@@ -23,6 +24,7 @@
     padding: 2rem;
     width: 300px;
     font-family: 'Playfair Display', serif;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 /* Övre ruta */

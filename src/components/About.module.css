@@ -2,49 +2,242 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12rem;
-    padding: 6rem 2rem;
+    gap: 10rem;
+    padding: 6rem 4rem;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.about img {
-    width: 450px;
-    height: auto;
-    object-fit: cover;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+.about.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Wrapper för rutorna */
-.about-boxes {
+/* Vänster kolumn: hello + boxar */
+.leftCol {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* "Hello," — stor fri rubrik */
+.helloText {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 10vw, 7rem);
+    color: #0F3D2E;
+    line-height: 1;
+    margin: 0 0 -0.3em -0.05em;
+    z-index: 1000;
     position: relative;
 }
 
-/* Gemensam stil för båda rutorna */
-.about-box {
-    color: #F5F1E9;
-    padding: 2rem;
-    width: 300px;
-    font-family: 'Playfair Display', serif;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+/* Wrapper för de överlappande rutorna */
+.boxes {
+    position: relative;
+    width: 400px;
+    height: 500px;
 }
 
 /* Övre ruta */
-.about-box.top {
-    background-color: #1F5A44;
+.topBox {
+    background-color: transparent;
+    color: #0F3D2E;
+    padding: 2rem;
+    width: 360px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     position: absolute;
-    top: -120px;
-    left: -40px;
-    font-size: 1.5rem;
-    text-align: left;
-    min-height: 400px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    outline: none;
 }
 
 /* Nedre ruta */
-.about-box.bottom {
-    position: relative;
-    top: 160px;
-    left: 40px;
+.bottomBox {
     background-color: #0F3D2E;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    padding: 3rem 2em;
+    color: #F5F1E9;
+    padding: 2rem 2.5rem;
+    width: 360px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 200px;
+    left: 60px;
+    z-index: 1000;
+}
+
+.bottomBox::before,
+.bottomBox::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: #F9D988;
+    border-style: solid;
+}
+
+.bottomBox::before {
+    top: -10px;
+    left: -10px;
+    border-width: 4px 0 0 4px;
+}
+
+.bottomBox::after {
+    bottom: -10px;
+    right: -10px;
+    border-width: 0 4px 4px 0;
+}
+
+/* Profilbild */
+.about img {
+    width: 420px;
+    height: 520px;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+/* ── Responsivt ── */
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .about {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 4rem 2rem 10rem;
+        position: relative;
+    }
+
+    .leftCol {
+        width: 100%;
+        position: relative;
+        z-index: 10;
+    }
+
+    .helloText {
+        font-size: clamp(3.5rem, 14vw, 6rem);
+        padding-left: 1rem;
+        margin-bottom: 0;
+    }
+
+    /* Bilden */
+    .about img {
+        width: 90%;
+        height: 460px;
+        object-position: center 40%;
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* boxes ligger över bilden, full bredd */
+    .boxes {
+        position: absolute;
+        width: 90%;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    /* topBox: vänster sida, nedre del av bilden */
+    .topBox {
+        position: absolute;
+        width: 50%;
+        top: 260px; /* nedre halvan av bilden */
+        left: -40px; /* sticker ut till vänster om bilden */
+        z-index: 10;
+        background-color: rgba(232, 225, 214, 0.914);
+        backdrop-filter: blur(2px);
+        padding: 1.5rem;
+        pointer-events: auto;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+   
+    .topBox::before,
+    .topBox::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-color: #F9D988;
+        border-style: solid;
+    }
+
+    .topBox::before {
+        top: -10px;
+        left: -10px;
+        border-width: 4px 0 0 4px;
+    }
+
+    .topBox::after {
+        bottom: -10px;
+        right: -10px;
+        border-width: 0 4px 4px 0;
+    }
+
+    /* bottomBox: höger sida, sticker ut under bildens nedre högra hörn */
+    .bottomBox {
+        position: absolute;
+        width: 45%;
+        font-size: 0.95rem;
+        top: 370px; /* sticker ner under bilden */
+        right: -40px;
+        left: auto;
+        z-index: 10;
+        padding: 1.5rem 2rem;
+        pointer-events: auto;
+    }
+}
+
+/* Mobil */
+@media (max-width: 520px) {
+    .about {
+        padding: 3rem 1rem 10rem;
+    }
+
+    .about img {
+        width: 100%;
+        height: 320px;
+        object-position: center 30%;
+    }
+
+    .boxes {
+        width: 100%;
+    }
+
+    .topBox {
+        width: 48%;
+        top: 250px;
+        left: -10px;
+        padding: 1rem 1.2rem;
+    }
+
+    .topbox h2 {
+        font-size: 2.6rem;
+    }
+
+    .bottomBox {
+        width: 65%;
+        font-size: 0.85rem;
+        top: 400px;
+        right: -10px;
+        padding: 1rem 1.2rem;
+    }
+}
+
+@media (max-width: 452px) {
+    .topBox {
+        font-size: 1.1em;
+    }
 }

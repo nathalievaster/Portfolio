@@ -25,12 +25,7 @@ const Contact = () => {
         <section className={styles.contact} id="contact" ref={sectionRef}>
             <h2>Let's create something together</h2>
 
-            {/* Animerad wavy divider */}
-            <div className={styles.divider}>
-                <svg viewBox="0 0 120 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,10 C15,0 30,20 45,10 C60,0 75,20 90,10 C105,0 120,20 120,10" />
-                </svg>
-            </div>
+            <hr className={styles.divider} />
 
             <p>
                 I'm always open to new opportunities, collaborations or just a conversation.

@@ -1,7 +1,50 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './MyWork.module.css'
 import gymtracker from '../assets/gymtracker.png'
+import gymtrackerWorkouts from '../assets/gymtrackerWorkouts.png'
+import gymtrackerExercises from '../assets/gymtrackerExercises.png'
 import travelbuddy from '../assets/travelbuddy.png'
+import travelbuddytravels from '../assets/travelbuddytravels.png'
+import travelbuddynews from '../assets/travelbuddynews.png'
+
+const gymImages = [gymtracker, gymtrackerWorkouts, gymtrackerExercises]
+const travelImages = [travelbuddy, travelbuddytravels, travelbuddynews]
+
+const Slideshow = ({ images, alt }: { images: string[], alt: string }) => {
+    const [current, setCurrent] = useState(0)
+    const [fading, setFading] = useState(false)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFading(true)
+            setTimeout(() => {
+                setCurrent(prev => (prev + 1) % images.length)
+                setFading(false)
+            }, 400) // fade-tid
+        }, 5000)
+
+        return () => clearInterval(interval)
+    }, [images.length])
+
+    return (
+        <div className={styles.slideshow}>
+            <img
+                src={images[current]}
+                alt={alt}
+                className={`${styles.slide} ${fading ? styles.fadeOut : styles.fadeIn}`}
+            />
+            <div className={styles.dots}>
+                {images.map((_, i) => (
+                    <span
+                        key={i}
+                        className={`${styles.dot} ${i === current ? styles.dotActive : ''}`}
+                        onClick={() => setCurrent(i)}
+                    />
+                ))}
+            </div>
+        </div>
+    )
+}
 
 const MyWork = () => {
     const projectsRef = useRef<(HTMLDivElement | null)[]>([])
@@ -33,9 +76,7 @@ const MyWork = () => {
 
         const handleScroll = () => {
             setIsScrollStopped(false)
-
             window.clearTimeout(timer)
-
             timer = window.setTimeout(() => {
                 setIsScrollStopped(true)
             }, 250)
@@ -52,37 +93,32 @@ const MyWork = () => {
     return (
         <section className={styles.work} id="work">
             <div className={styles.timeline}></div>
-
             <div className={`${styles.circle} ${isScrollStopped ? styles.circleActive : ''}`}></div>
 
             <div
-                ref={(el) => {
-                    projectsRef.current[0] = el
-                }}
+                ref={(el) => { projectsRef.current[0] = el }}
                 className={`${styles.project} ${styles.left}`}
             >
                 <div className={styles.content}>
                     <h3>GymTracker .NET application</h3>
                     <p>Gymtracker is a .NET application designed to help users track their gym workouts and progress.</p>
-                    <button className={styles.button}>Visit the website</button>
-                    <button className={styles.button}>Read more</button>
+                    <button className={styles.button}>Visit the website ↗</button>
+                    <button className={styles.button}>Read more →</button>
                 </div>
-                <img src={gymtracker} alt="Screenshot from the GymTracker app" />
+                <Slideshow images={gymImages} alt="Screenshot from the GymTracker app" />
             </div>
 
             <div
-                ref={(el) => {
-                    projectsRef.current[1] = el
-                }}
+                ref={(el) => { projectsRef.current[1] = el }}
                 className={`${styles.project} ${styles.right}`}
             >
-                <img src={travelbuddy} alt="Screenshot from the TravelBuddy app" />
+                <Slideshow images={travelImages} alt="Screenshot from the TravelBuddy app" />
                 <div className={styles.content}>
                     <h3>TravelBuddy Wordpress application</h3>
                     <p>TravelBuddy is a Wordpress application designed to help users plan and organize their travel itineraries.</p>
                     <p>It uses a self-developed theme.</p>
-                    <button className={styles.button}>Visit the website</button>
-                    <button className={styles.button}>Read more</button>
+                    <button className={styles.button}>Visit the website ↗</button>
+                    <button className={styles.button}>Read more →</button>
                 </div>
             </div>
         </section>

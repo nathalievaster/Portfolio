@@ -14,7 +14,7 @@
     transform: translateX(-50%);
 }
 
-/* cirkel */
+/* Cirkel */
 .circle {
     position: sticky;
     top: 50vh;
@@ -25,7 +25,6 @@
     background-color: #F9D988;
     border-radius: 50%;
     z-index: 10;
-
     transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
 }
 
@@ -44,7 +43,6 @@
     position: relative;
 }
 
-/* Vänster/höger layout */
 .left {
     flex-direction: row;
 }
@@ -53,25 +51,97 @@
     flex-direction: row-reverse;
 }
 
-/* Textbox */
+/* Textbox med guldhörn */
 .content {
     background-color: #1F5A44;
     color: white;
     padding: 2rem;
     max-width: 400px;
     margin: 6rem 0;
+    position: relative;
 }
 
-/* Bild – default (mindre) */
-.project img {
+.content::before,
+.content::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: #F9D988;
+    border-style: solid;
+}
+
+.content::before {
+    top: -10px;
+    left: -10px;
+    border-width: 4px 0 0 4px;
+}
+
+.content::after {
+    bottom: -10px;
+    right: -10px;
+    border-width: 0 4px 4px 0;
+}
+
+/* Slideshow */
+.slideshow {
+    position: relative;
     width: 550px;
-    transform: scale(0.85);
-    transition: transform 0.6s ease;
+    flex-shrink: 0;
 }
 
-/* Aktiv projekt → större */
-.active img {
-    transform: scale(1.1);
+.slide {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s ease, box-shadow 0.4s ease;
+}
+
+/* Fade-animationer */
+.fadeIn {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.fadeOut {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Aktiv projekt → hover på bild */
+.active .slide:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 12px 40px rgba(31, 90, 68, 0.3);
+}
+
+/* Navigeringsprickar */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #7DAA92;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dotActive {
+    background-color: #1F5A44;
+    transform: scale(1.4);
 }
 
 /* Knapp */
@@ -89,14 +159,90 @@
     padding: 0.7rem 1.5rem;
     border-radius: 999px;
     cursor: pointer;
-
     background-size: 300% 100%;
     background-position: left;
-
     transition: background-position 0.8s ease, transform 0.3s ease-in-out;
 }
 
 .button:hover {
     background-position: right;
     transform: scale(1.1);
+}
+
+/* ── Responsivt ── */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .project {
+        flex-direction: column !important;
+        margin: 6rem 1rem;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .slideshow {
+        width: 100%;
+        order: -1;
+    }
+
+    .active .slide:hover {
+        transform: scale(1.02) rotate(-0.5deg);
+    }
+
+    .content {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .timeline {
+        display: none;
+    }
+
+    .circle {
+        display: none;
+    }
+}
+
+/* Mobil */
+@media (max-width: 560px) {
+    .work {
+        padding: 4rem 1rem;
+        margin-top: 4rem;
+    }
+
+    .project {
+        margin: 3rem 0;
+        gap: 1.5rem;
+    }
+
+    .button {
+        margin: 1rem 0.4rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .content {
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    .content::before,
+    .content::after {
+        width: 28px;
+        height: 28px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+    }
+}
+
+@media (max-width: 425px) {
+    .work {
+        padding: 4rem 1rem;
+        margin-top: 8rem;
+    }
 }

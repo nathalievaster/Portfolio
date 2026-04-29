@@ -102,7 +102,14 @@ const MyWork = () => {
                 <div className={styles.content}>
                     <h3>GymTracker .NET application</h3>
                     <p>Gymtracker is a .NET application designed to help users track their gym workouts and progress.</p>
-                    <button className={styles.button}>Visit the website ↗</button>
+                    <a
+                        href="https://gymtracker-app.azurewebsites.net/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.button}
+                    >
+                        Visit the website ↗
+                    </a>
                     <button className={styles.button}>Read more →</button>
                 </div>
                 <Slideshow images={gymImages} alt="Screenshot from the GymTracker app" />
@@ -117,7 +124,14 @@ const MyWork = () => {
                     <h3>TravelBuddy Wordpress application</h3>
                     <p>TravelBuddy is a Wordpress application designed to help users plan and organize their travel itineraries.</p>
                     <p>It uses a self-developed theme.</p>
-                    <button className={styles.button}>Visit the website ↗</button>
+                    <a
+                        href="http://64.112.127.70/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.button}
+                    >
+                        Visit the website ↗
+                    </a>
                     <button className={styles.button}>Read more →</button>
                 </div>
             </div>

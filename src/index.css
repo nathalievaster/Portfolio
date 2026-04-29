@@ -16,3 +16,7 @@ body, p, button {
   line-height: 1.7;
   color: #E8E1D6;
 }
+
+a {
+  text-decoration: none;
+}

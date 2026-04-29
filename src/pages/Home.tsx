@@ -1,7 +1,6 @@
 import About from '../components/About'
 import MyWork from '../components/MyWork'
 import Contact from '../components/Contact'
-import Navbar from '../components/Navbar'
 
 const Home = () => {
   return (
@@ -9,7 +8,6 @@ const Home = () => {
       <About />
       <MyWork />
       <Contact />
-      <Navbar />
     </>
   )
 }

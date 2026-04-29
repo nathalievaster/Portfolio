@@ -6,6 +6,7 @@ import gymtrackerExercises from '../assets/gymtrackerExercises.png'
 import travelbuddy from '../assets/travelbuddy.png'
 import travelbuddytravels from '../assets/travelbuddytravels.png'
 import travelbuddynews from '../assets/travelbuddynews.png'
+import { Link } from 'react-router-dom'
 
 const gymImages = [gymtracker, gymtrackerWorkouts, gymtrackerExercises]
 const travelImages = [travelbuddy, travelbuddytravels, travelbuddynews]
@@ -110,7 +111,9 @@ const MyWork = () => {
                     >
                         Visit the website ↗
                     </a>
-                    <button className={styles.button}>Read more →</button>
+                    <Link to="/projects/gymtracker" className={styles.button}>
+                        Read more →
+                    </Link>
                 </div>
                 <Slideshow images={gymImages} alt="Screenshot from the GymTracker app" />
             </div>

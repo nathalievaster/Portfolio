@@ -1,12 +1,13 @@
+import { HashLink } from 'react-router-hash-link'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
     return (
         <nav className={styles.nav}>
             <ul>
-                <li><a href="#about">This is me</a></li>
-                <li><a href="#work">My work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><HashLink smooth to="/#about">This is me</HashLink></li>
+                <li><HashLink smooth to="/#work">My work</HashLink></li>
+                <li><HashLink smooth to="/#contact">Contact</HashLink></li>
             </ul>
         </nav>
     )

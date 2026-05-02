@@ -55,31 +55,34 @@
 .content {
     background-color: #1F5A44;
     color: white;
-    padding: 2rem;
+    padding: 4rem;
     max-width: 400px;
     margin: 6rem 0;
     position: relative;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .content::before,
 .content::after {
     content: '';
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-color: #F9D988;
     border-style: solid;
 }
 
 .content::before {
-    top: -10px;
-    left: -10px;
+    top: -20px;
+    left: -20px;
     border-width: 4px 0 0 4px;
 }
 
 .content::after {
-    bottom: -10px;
-    right: -10px;
+    bottom: -20px;
+    right: -20px;
     border-width: 0 4px 4px 0;
 }
 
@@ -107,13 +110,23 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 /* Aktiv projekt → hover på bild */

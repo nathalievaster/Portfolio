@@ -135,7 +135,9 @@ const MyWork = () => {
                     >
                         Visit the website ↗
                     </a>
-                    <button className={styles.button}>Read more →</button>
+                    <Link to="/projects/travelbuddy" className={styles.button}>
+                        Read more →
+                    </Link>
                 </div>
             </div>
         </section>

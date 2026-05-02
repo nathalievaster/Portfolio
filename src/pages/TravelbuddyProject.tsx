@@ -90,7 +90,15 @@ const TravelBuddyProject = () => {
                     </p>
                     <div className={styles.heroLinks}>
                         <a
-                            href="https://github.com/nathalievaster/travelbuddy"
+                            href="http://64.112.127.70/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.btnPrimary}
+                        >
+                            Visit the website ↗
+                        </a>
+                        <a
+                            href="https://github.com/nathalievaster/Travelbuddy-tema"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.btnSecondary}
